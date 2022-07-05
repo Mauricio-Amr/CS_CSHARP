@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using composition3.entities;
+using System.Globalization;
 
 namespace composition3.entities
 {
@@ -10,21 +12,34 @@ namespace composition3.entities
     {
         public int Quantity { get; set; }
         public double Price  { get; set; }
+        public Product Product { get; set; }
 
 
         public OrderItem()
         {
 
         }
-        public OrderItem(int quantity, double price)
+        public OrderItem(int quantity, double price, Product product )
         {
             Quantity = quantity;
             Price = price;
+            Product = product;
         }
 
-        public double SubTotal(int quantity, double price)
+        public double SubTotal()
         {
-            return quantity * price;
+            return Quantity * Price;
+        }          
+
+        public override string ToString()
+        {
+            return Product.Name
+                + ", $"
+                + Price.ToString("F2" , CultureInfo.InvariantCulture)
+                + ", Quantity : "
+                + Quantity
+                + ", Subtotal: $"
+                + SubTotal().ToString("F2" , CultureInfo.InvariantCulture);
         }
     }
 }

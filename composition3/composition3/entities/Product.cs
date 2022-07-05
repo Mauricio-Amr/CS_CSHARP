@@ -16,5 +16,7 @@ namespace composition3.entities
             Name = name;
             Price = price;
         }
+
+
     }
 }
