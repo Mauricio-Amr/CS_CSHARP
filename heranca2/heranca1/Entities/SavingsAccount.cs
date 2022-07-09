@@ -25,5 +25,13 @@ namespace heranca2.Entities
             Balance += Balance * InterestRate;
 
         }
+
+        // sobre escrever o  metodo  account , com virtual
+
+        public override void Withdraw(double amount)
+        {
+           base.Withdraw(amount);
+            Balance -= 2.0;
+        }
     }
 }
